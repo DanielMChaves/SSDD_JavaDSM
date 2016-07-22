@@ -19,9 +19,10 @@ Con respecto al sistema que se va a desarrollar, se trata de un entorno con las 
 - Utiliza un único gestor centralizado (ServidorDSM) para manejar los cerrojos.
 - Como especifica el modelo de coherencia de entrada, cuando un proceso entra en una sección crítica, hay que asegurarse de que vea los últimos cambios que se hayan hecho sobre los objetos compartidos asociados a ese cerrojo desde la última vez que este proceso accedió en sección crítica a los mismos (recuerde que si hay accesos fuera de una sección crítica no es necesario garantizar ningún comportamiento específico: el resultado es impredecible).
 - En el modelo de coherencia EC, no es necesario realizar ninguna acción a la salida de una sección crítica de un cerrojo. Los datos modificados se quedarán en ese proceso hasta que otro entre en la sección crítica controlada por ese mismo cerrojo. - Sin embargo, en el sistema que se propone en este ejercicio, este esquema plantearía el problema de qué hacer si el primer proceso termina antes de que el segundo quiera entrar en esa sección crítica. Para solventarlo, aunque sea menos eficiente, el gestor centralizado también actuará como almacén de objetos compartidos.
-- En consecuencia, la politíca de actualización será la siguiente:
-— - Al entrar en la sección crítica de un determinado cerrojo, el proceso contactará con el gestor informándole de qué versión tiene de cada objeto compartido asociado a dicho cerrojo. El gestor enviará aquellos objetos cuya versión sea más actual que la que posee el proceso que actúa como cliente.
-- - Al salir de una sección crítica en modo exclusivo, el proceso enviará al gestor la nueva versión de todos los objetos asociados al cerrojo. Nótese que, por simplicidad, no se va a implementar ninguna estrategia para detectar qué objetos han sido modificados: se considerará que todos lo han sido.
+
+En consecuencia, la politíca de actualización será la siguiente:
+- Al entrar en la sección crítica de un determinado cerrojo, el proceso contactará con el gestor informándole de qué versión tiene de cada objeto compartido asociado a dicho cerrojo. El gestor enviará aquellos objetos cuya versión sea más actual que la que posee el proceso que actúa como cliente.
+- Al salir de una sección crítica en modo exclusivo, el proceso enviará al gestor la nueva versión de todos los objetos asociados al cerrojo. Nótese que, por simplicidad, no se va a implementar ninguna estrategia para detectar qué objetos han sido modificados: se considerará que todos lo han sido.
 
 En cuanto a la tecnología de comunicación usada en la práctica, dadas las características de la misma, se ha elegido Java RMI (si no está familiarizado con el uso de esta tecnología puede consultar esta guía sobre la programación en Java RMI).
 
