@@ -4,7 +4,7 @@
 
 **Curso:** 2015/2016
 
-**Autores:** [Daniel Melero Chaves] (https://github.com/DanielMChaves) y [Miguel Nuñez Díaz-Montes] (https://github.com/mnunezdm)
+**Autores:** [Daniel Melero Chaves](https://github.com/DanielMChaves) y [Miguel Nuñez Díaz-Montes](https://github.com/mnunezdm)
 
 **Lenguaje:** Java
 
